@@ -71,9 +71,9 @@ jobs:
           chmod a+x debian/scripts/*
           chmod a+x debian/scripts/misc/*
           perl -i -pe 's/(\d+\.\d+\.\d+-\d+\.\d+)/$1+wsl/ if $. == 1' debian.master/changelog
-          
-        - name: Process Kernel Config
-          run: |
+      
+      - name: Process Kernel Config
+        run: |
           cd kernelsource
           debian/scripts/misc/annotations --arch amd64 --update ../config_wsl
           fakeroot debian/rules clean

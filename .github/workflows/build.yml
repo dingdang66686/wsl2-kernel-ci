@@ -117,6 +117,7 @@ jobs:
           NAME="$(ls *image*| cut -d_ -f1 | sed s/-image-unsigned//)"
           VERSION="$(echo $NAME|cut -f2 -d-)"
           echo "NAME=$NAME" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
       
       - name: Arrange Artifacts
         run: |

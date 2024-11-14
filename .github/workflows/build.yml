@@ -71,12 +71,13 @@ jobs:
           chmod a+x debian/scripts/*
           chmod a+x debian/scripts/misc/*
           fakeroot debian/rules clean
+          perl -i -pe 's/(\d+\.\d+\.\d+-\d+\.\d+)/$1-wsl/ if $. == 1' debian.master/changelog
       
       - name: Process Kernel Config
         run: |
           cd kernelsource
-          debian/scripts/misc/annotations --arch amd64 --update ../config-wsl
-          perl -i -pe 's/(\d+\.\d+\.\d+-\d+\.\d+)/$1-wsl/ if $. == 1' debian.master/changelog
+          debian/scripts/misc/annotations --arch amd64 --update ../config_wsl
+          fakeroot debian/rules updateconfigs
       
       # - name: Patch WSL2 Kernel Config
       #   working-directory: build_workdir

@@ -151,6 +151,12 @@ jobs:
       ### XXX: Main building steps here
       ###
       ##########################################################
+
+      - name: ccache
+      uses: hendrikmuhs/ccache-action@v1.2
+      with:
+        create-symlink: true
+        max-size: 10G
             
       - name: Compile Kernel Debs
         run: |
@@ -166,9 +172,9 @@ jobs:
       
       - name: Arrange Artifacts
         run: |
-        mkdir -p /tmp/build_output
-        mv *.deb /tmp/build_output
-        mv kernelsource/debian/build/build-generic/arch/x86/boot/bzImage /tmp/build_output
+          mkdir -p /tmp/build_output
+          mv *.deb /tmp/build_output
+          mv kernelsource/debian/build/build-generic/arch/x86/boot/bzImage /tmp/build_output
 
       # Enable tmate debugging of manually-triggered workflows if the input option was provided
       - name: Setup tmate session

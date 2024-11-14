@@ -26,7 +26,7 @@ jobs:
     # strategy:
     #   matrix:
     #     builder: [ghcr.io/nyamisty/altserver_builder_alpine_armv7, ghcr.io/nyamisty/altserver_builder_alpine_aarch64, ghcr.io/nyamisty/altserver_builder_alpine_amd64, ghcr.io/nyamisty/altserver_builder_alpine_i386]
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       ##########################################################
       ###
@@ -51,8 +51,9 @@ jobs:
       - name: Prepare WSL2 Build Environment
         run: |
           sudo sed -i "/deb-src/s/# //g" /etc/apt/sources.list
-          sudo apt build-dep linux
-          sudo apt install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf llvm
+          sudo apt update
+          sudo apt build-dep linux -y;
+          sudo apt install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf llvm -y
 
       - name: Download WSL2 Kernel Source
         run: |

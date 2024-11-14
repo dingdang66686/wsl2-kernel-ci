@@ -166,9 +166,9 @@ jobs:
       
       - name: Arrange Artifacts
         run: |
-          mv kernelsource/debian/arch/x86/boot/bzImage bzImage
-          mkdir -p /tmp/build_output
-          mv *.deb /tmp/build_output
+        mkdir -p /tmp/build_output
+        mv *.deb /tmp/build_output
+        mv kernelsource/debian/build/build-generic/arch/x86/boot/bzImage /tmp/build_output
 
       # Enable tmate debugging of manually-triggered workflows if the input option was provided
       - name: Setup tmate session

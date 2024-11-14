@@ -156,4 +156,4 @@ jobs:
           removeArtifacts: true
           replacesArtifacts: false
           artifactErrorsFailBuild: true
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.GIT_HUB_TOKEN }}

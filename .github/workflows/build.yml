@@ -153,10 +153,10 @@ jobs:
       ##########################################################
 
       - name: ccache
-      uses: hendrikmuhs/ccache-action@v1.2
-      with:
-        create-symlink: true
-        max-size: 10G
+        uses: hendrikmuhs/ccache-action@v1.2
+        with:
+          create-symlink: true
+          max-size: 10G
             
       - name: Compile Kernel Debs
         run: |

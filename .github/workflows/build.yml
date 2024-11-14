@@ -66,7 +66,7 @@ jobs:
         
       - name: Preprocess Kernel Sources
         run: |
-          cd kerelsource  
+          cd kernelsource  
           chmod a+x debian/rules
           chmod a+x debian/scripts/*
           chmod a+x debian/scripts/misc/*

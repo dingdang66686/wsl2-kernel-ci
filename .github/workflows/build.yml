@@ -50,7 +50,9 @@ jobs:
 
       - name: Prepare WSL2 Build Environment
         run: |
-          sudo sed -i "/deb-src/s/# //g" /etc/apt/sources.list
+          #sudo sed -i "/deb-src/s/# //g" /etc/apt/sources.list
+          # For deb822
+          sudo sed -i '/^Types:/ s/\bdeb\b/deb deb-src/g' /etc/apt/sources.list.d/ubuntu.sources
           sudo apt update
           sudo apt build-dep linux -y;
           sudo apt install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf llvm -y

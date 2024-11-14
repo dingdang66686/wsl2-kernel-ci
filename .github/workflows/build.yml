@@ -56,13 +56,14 @@ jobs:
           sudo apt update
           sudo apt build-dep linux -y;
           sudo apt install libncurses-dev gawk flex bison openssl libssl-dev dkms libelf-dev libudev-dev libpci-dev libiberty-dev autoconf llvm -y
+          #remove rust
+          rustup self uninstall -y
 
       - name: Download WSL2 Kernel Source
         run: |
           apt source linux -y
           ls *.|cut -f1 -d/
           mv linux*/ kernelsource
-        
         
       - name: Preprocess Kernel Sources
         run: |
